@@ -3,8 +3,8 @@
 def ingreso_producto (lista_stock):
     
         producto=input("Ingrese el nombre del producto: ").lower() ###Ingreso de un nuevo item la idea la key 'producto' esté en minuscula para facilitar la busqueda.
-        cantidad=int(input("Ingrese la cantidad a ingresar el producto: "))
-        precio=float(input("Ingrese el precio unitario del producto: "))
+        cantidad=int(input("Ingrese la cantidad a ingresar el producto (unidades enteras): "))
+        precio=float(input("Ingrese el precio unitario del producto: $"))
         lista_stock[producto]={"cantidad":cantidad,"precio":precio} 
 
 def busqueda_producto(lista_stock):
@@ -14,7 +14,7 @@ def busqueda_producto(lista_stock):
         ###un condicional para la busqueda, si esta se muestra los datos sino un mjs indicando que no esta.
          
             print(f"""El producto {producto} se encuentra en el inventario.
-    Estos son las unidades disponibles: {lista_stock[producto]["cantidad"]}.
+    Estas son las unidades disponibles: {lista_stock[producto]["cantidad"]}.
     Este es el precio unitario {lista_stock[producto]["precio"]}""")
             
         else:

@@ -1,4 +1,4 @@
-###Gestion de control. Primera version.
+###Gestion de control. Segunda version.
 from modulo_funciones import ingreso_producto, busqueda_producto, modificar_producto, listado_productos, exportar_archivo, importar_archivo
 
         

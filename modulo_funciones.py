@@ -1,11 +1,29 @@
 from os import system
 
+import json
+
+archivo='lista_stock.json'
+
+
 def ingreso_producto (lista_stock):
     system('cls')
         
-    producto=input("Ingrese el nombre del producto: ").lower() ###Ingreso de un nuevo item la idea la key 'producto' esté en minuscula para facilitar la busqueda.
-    cantidad=int(input("Ingrese la cantidad a ingresar el producto (unidades enteras): "))
-    precio=float(input("Ingrese el precio unitario del producto: $"))
+    producto=input("Ingrese el nombre del producto: ").lower() 
+    ###Ingreso de un nuevo item la idea la key 'producto' esté en minuscula para facilitar la busqueda.
+    while True:
+        try:
+            cantidad=int(input("Ingrese la cantidad a ingresar el producto (unidades enteras): "))
+            break
+        except:
+            print("Las unidades se representan en números enteros")
+      
+    while True:
+        try:
+            precio=float(input("Ingrese el precio unitario del producto: $"))
+            break
+        except:
+                print("El precio debe ser representado en números.")
+     
     lista_stock[producto]={"cantidad":cantidad,"precio":precio} 
 
 def busqueda_producto(lista_stock):
@@ -21,6 +39,18 @@ def busqueda_producto(lista_stock):
             
     else:
         print(f"No se ha encontrado una entrada con la descripción {producto}")
+        
+        while True:
+            try:
+                opcion=int(input(f"Desea ingresar {producto} a la lista? (1='Si' o 2='No') : "))
+            except:
+                print("Elija entre (1='Si' o 2='No'): ")
+            else:   
+                if opcion == 1 :ingreso_producto(lista_stock)
+                elif opcion== 2:print("Vuelta al menú...")
+                else:print("Opción Invalida, vuelta al menú.") 
+                break
+        
         #Me gustaria agreagar un mjs y una funcion en el caso de que si no esta le pregunte al usuario si desea crear una nueva entrada
 
 def modificar_producto(lista_stock):

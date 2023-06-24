@@ -2,8 +2,21 @@ from os import system
 
 import json
 
-archivo='lista_stock.json'
+def obtener_stock():
+    try:
+        filename='lista_stock.json'
+        with open (filename,'r') as file:
+            stock=json.load(file)      
+    except FileNotFoundError:
+        stock={}
+    return stock
 
+
+def guardar_stock(stock):
+    filename= 'lista_stock.json'
+    with open(filename,'w') as file:
+        json.dump(stock,file, indent=2)
+        
 
 def ingreso_producto (lista_stock):
     system('cls')
@@ -25,6 +38,8 @@ def ingreso_producto (lista_stock):
                 print("El precio debe ser representado en números.")
      
     lista_stock[producto]={"cantidad":cantidad,"precio":precio} 
+    guardar_stock(lista_stock)
+    
 
 def busqueda_producto(lista_stock):
     system('cls')

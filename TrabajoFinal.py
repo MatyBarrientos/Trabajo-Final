@@ -1,18 +1,20 @@
 ###Gestion de control. Segunda version.
-from modulo_funciones import ingreso_producto, busqueda_producto, modificar_producto, listado_productos, exportar_archivo, importar_archivo
+from modulo_funciones import ingreso_producto, busqueda_producto, modificar_producto, listado_productos, exportar_archivo, importar_archivo, obtener_stock
 
         
     
 print("""Bienvenido al Sistema de gestión y Control de stock""")
 
-stock={
-    "procesador":{"cantidad":12,"precio":50000},
-    "motherboard":{"cantidad":10,"precio":11450},
-    "mouse":{"cantidad":52,"precio":5000},
-    "teclado":{"cantidad":14,"precio":4500},
-} 
+# stock={
+#     "procesador":{"cantidad":12,"precio":50000},
+#     "motherboard":{"cantidad":10,"precio":11450},
+#     "mouse":{"cantidad":52,"precio":5000},
+#     "teclado":{"cantidad":14,"precio":4500},
+# } 
 ###Datos para realizar pruebas básicas de funcionamiento, me gustaria cambiar los datos a mostrar quizas agregarle más.
 #Que el diccionario queda algo así stock={ 100200 : {'producto':'procesador','cantidad':12,'precio':50000,'importado':False}} ***100200 es una especie de codigo del stock
+
+stock= obtener_stock()
 
 while True:
     print("""Seleccione su Opción.

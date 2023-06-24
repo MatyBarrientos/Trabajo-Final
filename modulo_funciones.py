@@ -1,8 +1,10 @@
 from os import system
+from funciones_generales import obtenerEntero, obtenerFlotante
 
 import json
 
 def obtener_stock():
+    """Carga los datos de un archivo Json, en caso de no existir crea un diccionario vacio"""
     try:
         filename='lista_stock.json'
         with open (filename,'r') as file:
@@ -11,6 +13,8 @@ def obtener_stock():
         stock={}
     return stock
 
+###Datos para realizar pruebas básicas de funcionamiento, me gustaria cambiar los datos a mostrar quizas agregarle más.
+#Que el diccionario queda algo así stock={ 100200 : {'producto':'procesador','cantidad':12,'precio':50000,'importado':False}} ***100200 es una especie de codigo del stock
 
 def guardar_stock(stock):
     filename= 'lista_stock.json'
@@ -22,27 +26,20 @@ def ingreso_producto (lista_stock):
     system('cls')
         
     producto=input("Ingrese el nombre del producto: ").lower() 
-    ###Ingreso de un nuevo item la idea la key 'producto' esté en minuscula para facilitar la busqueda.
-    while True:
-        try:
-            cantidad=int(input("Ingrese la cantidad a ingresar el producto (unidades enteras): "))
-            break
-        except:
-            print("Las unidades se representan en números enteros")
-      
-    while True:
-        try:
-            precio=float(input("Ingrese el precio unitario del producto: $"))
-            break
-        except:
-                print("El precio debe ser representado en números.")
+
+    cantidad=obtenerEntero("Ingrese la cantidad a ingresar el producto (unidades enteras): ","Las unidades se representan en números enteros")
+    
+    precio=obtenerFlotante("Ingrese el precio unitario del producto: $","El precio debe ser representado en números.")
      
     lista_stock[producto]={"cantidad":cantidad,"precio":precio} 
+    
     guardar_stock(lista_stock)
     
 
 def busqueda_producto(lista_stock):
+    
     system('cls')
+    
     producto=input("Ingrese el nombre del producto: ").lower() #seguimos con las minusculas
     
     if producto in lista_stock: 
@@ -74,21 +71,21 @@ def modificar_producto(lista_stock):
     if producto in lista_stock: #me fijo si está el producto y en caso de ser afirmativo procedo a eliminar el par (key-value) y agregar el qu el usuario elija
             lista_stock.pop(producto)
             producto=input("Ingrese el nombre del producto: ").lower()
-            cantidad=int(input("Ingrese la cantidad a ingresar el producto: "))
-            precio=float(input("Ingrese el precio unitario del producto: "))
+            cantidad=obtenerEntero("Ingrese la cantidad a ingresar el producto (unidades enteras): ","Las unidades se representan en números enteros")
+            precio=obtenerFlotante("Ingrese el precio unitario del producto: $","El precio debe ser representado en números.")
             lista_stock[producto]={"cantidad":cantidad,"precio":precio}
     else:
         print(f"No se encuentra en la lista de stock el producto {producto} ")
-            
-def listado_productos (lista_stock):
-    system('cls')
-    for nombre,producto in lista_stock.items():
-        print (f"{nombre} - cantidad: {producto['cantidad']} - precio:{producto['precio']}.")
         
-def exportar_archivo():
+    guardar_stock(lista_stock)
+            
+def listado_productos (lista_stock): ###Un simple print del diccionario, falta dejarlo bonito es muy basico y no es una linda salida.
+    
     system('cls')
-    pass
-
-def importar_archivo():
-    system('cls')
-    pass
+    
+    if lista_stock:
+        for nombre,producto in lista_stock.items():
+            print (f"{nombre} - cantidad: {producto['cantidad']} - precio: {producto['precio']}")
+    else:
+        print("No hay entradas en la lista.")
+        

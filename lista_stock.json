@@ -1,14 +1,58 @@
 {
-  "pad": {
-    "cantidad": 300,
-    "precio": 15000.0
-  },
-  "parlantes tyb": {
+  "5260": {
+    "producto": "calculadora cient\u00edfica",
+    "marca": "mgcasio",
     "cantidad": 32,
-    "precio": 5000.0
+    "precio": 14000.0,
+    "importado": false
   },
-  "escritorio 2 cuerpos": {
-    "cantidad": 25,
-    "precio": 4000.0
+  "9632": {
+    "producto": "led 49 pulgadas",
+    "marca": "lg",
+    "cantidad": 12,
+    "precio": 180000.0,
+    "importado": false
+  },
+  "3350": {
+    "producto": "teclado rgb",
+    "marca": "logitech",
+    "cantidad": 60,
+    "precio": 7500.0,
+    "importado": true
+  },
+  "9850": {
+    "producto": "gabinete mid tower metal",
+    "marca": "sentay",
+    "cantidad": 12,
+    "precio": 25000.0,
+    "importado": false
+  },
+  "1234": {
+    "producto": "parlantes negro/amarillos",
+    "marca": "edifer",
+    "cantidad": 12,
+    "precio": 8600.0,
+    "importado": true
+  },
+  "6985": {
+    "producto": "escritorio regulable",
+    "marca": "aglomerado inc",
+    "cantidad": 5,
+    "precio": 45000.0,
+    "importado": true
+  },
+  "6598": {
+    "producto": "auriculares cableados verdes",
+    "marca": "razer",
+    "cantidad": 36,
+    "precio": 45000.0,
+    "importado": false
+  },
+  "7596": {
+    "producto": "gabinete white espejado",
+    "marca": "corsair",
+    "cantidad": 6,
+    "precio": 100000.0,
+    "importado": false
   }
 }

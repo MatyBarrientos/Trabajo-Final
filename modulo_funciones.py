@@ -1,79 +1,189 @@
-from os import system
-
+from funciones_generales import obtener_entero, obtener_flotante, limpiar_pantalla
+from tabulate import tabulate
 import json
 
-archivo='lista_stock.json'
+def obtener_stock():
+    """Carga los datos de un archivo Json, en caso de no existir crea un diccionario vacio"""
+    try:
+        filename = 'lista_stock.json'
+        with open (filename,'r') as file:
+            stock = json.load(file)      
+    except FileNotFoundError:
+        stock = {}
+    return stock
 
+def guardar_stock(stock):
+    '''esta función actualiza los datos alojados en el diccionario Stock y lo vuelva en el archivo Json.
+    
+    Args :
+        stock {dic} : Diccionario que contiene un stock.
+    '''
+    filename = 'lista_stock.json'
+    with open(filename, 'w') as file :
+        json.dump(stock, file, indent = 2)
+        
 
 def ingreso_producto (lista_stock):
-    system('cls')
-        
-    producto=input("Ingrese el nombre del producto: ").lower() 
-    ###Ingreso de un nuevo item la idea la key 'producto' esté en minuscula para facilitar la busqueda.
-    while True:
-        try:
-            cantidad=int(input("Ingrese la cantidad a ingresar el producto (unidades enteras): "))
-            break
-        except:
-            print("Las unidades se representan en números enteros")
-      
-    while True:
-        try:
-            precio=float(input("Ingrese el precio unitario del producto: $"))
-            break
-        except:
-                print("El precio debe ser representado en números.")
+    """Ingreso de un nuevo artículo en el stock y al final se actualiza el arvicho Json.
+
+    Args:
+        lista_stock {dic}: Diccionario que contiene el stock
+    """
+    
+    limpiar_pantalla()
      
-    lista_stock[producto]={"cantidad":cantidad,"precio":precio} 
+    codigo =str( obtener_entero("Ingrese el código del producto: ", "el código debe ser representado en un número entero."))
+    
+    producto = input("Ingrese el nombre del producto: ").lower() 
+    
+    marca = input("Ingrese la marca: ").lower() 
+
+    cantidad = obtener_entero("Ingrese la cantidad a ingresar el producto (unidades enteras): ","Las unidades se representan en números enteros")
+    
+    precio = obtener_flotante("Ingrese el precio unitario del producto: $","El precio debe ser representado en números.")
+    
+    
+    importado_int = obtener_entero("El producto es de origen nacional? : (1-Sí o 2-No): ", "Opción Invalida (1-Sí o 2-No): ")
+    while importado_int != 1 and importado_int != 2:
+        importado_int = obtener_entero("El producto es de origen nacional? : (1-Sí o 2-No): ", "Opción Invalida (1-Sí o 2-No): ")  
+    if(importado_int == 1):
+            importado=True
+    elif(importado_int == 2):
+            importado=False
+     
+    lista_stock[codigo] = {'producto':producto,'marca': marca, 'cantidad':cantidad,'precio': precio ,'importado':importado}
+    
+    guardar_stock(lista_stock)
+    
 
 def busqueda_producto(lista_stock):
-    system('cls')
-    producto=input("Ingrese el nombre del producto: ").lower() #seguimos con las minusculas
     
-    if producto in lista_stock: 
-        ###un condicional para la busqueda, si esta se muestra los datos sino un mjs indicando que no esta.
+    limpiar_pantalla()
+    
+    codigo = str(obtener_entero("Ingrese el nombre del producto: ", "Opción Invalida, debe ser un número entero: "))
+    
+    if codigo in lista_stock: 
          
-        print(f"""El producto {producto} se encuentra en el inventario.
-    Estas son las unidades disponibles: {lista_stock[producto]["cantidad"]}.
-    Este es el precio unitario {lista_stock[producto]["precio"]}""")
+        print(f"El código {codigo} se encuentra en el inventario.")
+        print ((f"{'producto':<15} | {'marca':<15} | {'cantidad':<15} | {'precio':<15}"))
+        print ("-" * 65)
+        print (f"{lista_stock[codigo]['producto']:<15} | {lista_stock[codigo]['marca']:<15} | {lista_stock[codigo]['cantidad']:<15} | {lista_stock[codigo]['precio']:<15}")
+        print ("-" * 65)
             
     else:
-        print(f"No se ha encontrado una entrada con la descripción {producto}")
+        print(f"No se ha encontrado una entrada con la descripción {codigo}")
         
-        while True:
-            try:
-                opcion=int(input(f"Desea ingresar {producto} a la lista? (1='Si' o 2='No') : "))
-            except:
-                print("Elija entre (1='Si' o 2='No'): ")
-            else:   
-                if opcion == 1 :ingreso_producto(lista_stock)
-                elif opcion== 2:print("Vuelta al menú...")
-                else:print("Opción Invalida, vuelta al menú.") 
-                break
+        opcion = obtener_entero(f"Desea ingresar {codigo} a la lista? (1='Si' o 2='No') : ","Opción Invalida, debe ser un número entero (1='Si' o 2='No')")
+        while opcion != 1 and opcion != 2: 
+            opcion = obtener_entero(f"Desea ingresar {codigo} a la lista? (1='Si' o 2='No') : ","Opción Invalida, debe ser un número entero (1='Si' o 2='No')")
+        if opcion == 1 :
+                ingreso_producto(lista_stock)
+        else:
+                print("Vuelta al menú...")
         
-        #Me gustaria agreagar un mjs y una funcion en el caso de que si no esta le pregunte al usuario si desea crear una nueva entrada
 
 def modificar_producto(lista_stock):
-    system('cls')
-    producto=input("Ingrese el producto a modificar: ").lower()
-    if producto in lista_stock: #me fijo si está el producto y en caso de ser afirmativo procedo a eliminar el par (key-value) y agregar el qu el usuario elija
-            lista_stock.pop(producto)
-            producto=input("Ingrese el nombre del producto: ").lower()
-            cantidad=int(input("Ingrese la cantidad a ingresar el producto: "))
-            precio=float(input("Ingrese el precio unitario del producto: "))
-            lista_stock[producto]={"cantidad":cantidad,"precio":precio}
+    
+    limpiar_pantalla()
+
+    codigo=input("Ingrese el producto a modificar: ").lower()
+    
+    if codigo in lista_stock:
+            
+            print(f"producto : {lista_stock[codigo]['producto']}")
+            
+            producto = input("Ingrese el nombre del producto: ").lower()
+            if producto == "" :
+                producto = lista_stock[codigo]['producto']
+            else:
+                producto = producto
+                
+            print(f"marca : {lista_stock[codigo]['marca']}")
+            
+            marca = input("Ingrese la marca: ").lower() 
+            if marca == "" :
+                marca = lista_stock[codigo]['marca']
+            else:
+                marca = marca
+            
+            print(f"cantidad : {lista_stock[codigo]['cantidad']}")
+            
+            cantidad = obtener_entero("Ingrese la cantidad a ingresar el producto (unidades enteras): ","Las unidades se representan en números enteros")
+            
+            print(f"precio : {lista_stock[codigo]['precio']}")
+            
+            precio = obtener_flotante("Ingrese el precio unitario del producto: $","El precio debe ser representado en números.")
+                
+            importado_int = obtener_entero("El producto es de origen nacional? : (1-Sí o 2-No): ", "Opción Invalida (1-Sí o 2-No): ")
+            while importado_int != 1 and importado_int != 2:
+                importado_int = obtener_entero("El producto es de origen nacional? : (1-Sí o 2-No): ", "Opción Invalida (1-Sí o 2-No): ")  
+            if(importado_int == 1):
+                importado=True
+            elif(importado_int == 2):
+                importado=False
+            
+            
+            lista_stock[str(codigo)] = {'producto':producto,'marca': marca, 'cantidad':cantidad,'precio': precio ,'importado':importado}
     else:
-        print(f"No se encuentra en la lista de stock el producto {producto} ")
+        print(f"No se encuentra en la lista de stock el producto {codigo} ")
+        
+    guardar_stock(lista_stock)
             
 def listado_productos (lista_stock):
-    system('cls')
-    for nombre,producto in lista_stock.items():
-        print (f"{nombre} - cantidad: {producto['cantidad']} - precio:{producto['precio']}.")
+    
+    limpiar_pantalla()
+    
+    if lista_stock:
         
-def exportar_archivo():
-    system('cls')
-    pass
+        encabezados = ['id','producto','marca', 'cantidad','precio','importado']
+        
+        filas = [[codigo, datos["producto"], datos["marca"], datos["cantidad"],datos["precio"],datos["importado"]] for codigo, datos in lista_stock.items()]
 
-def importar_archivo():
-    system('cls')
-    pass
+        tabla = tabulate(filas, headers=encabezados, tablefmt='grid')
+        
+        print(tabla)
+    else:
+        print("No hay entradas en la lista.")
+        
+def impresionGenral(lista_stock):
+    for codigo, producto in lista_stock.items():
+        print(f"{codigo} {producto}")
+
+
+def busqueda_nombre(lista_stock):
+    
+    nombre=input("ingrese el nombre del producto a buscar: ")
+    
+    coincidencia = False
+    
+    for codigo, producto in lista_stock.items():
+        
+        if nombre in producto['producto']:
+            
+            if not coincidencia:
+                
+                print ("+","-" * 85,"+")
+                print ((f"{'producto':<20} | {'marca':<20} | {'cantidad':<20} | {'precio':<20}"))
+                print ("+","-" * 85,"+")
+                
+                coincidencia= True
+                
+            print (f"{lista_stock[codigo]['producto']:<20} | {lista_stock[codigo]['marca']:<20} | {lista_stock[codigo]['cantidad']:<20} | {lista_stock[codigo]['precio']:<20}")
+            
+            print ("+","-" * 85,"+")
+            
+    if not coincidencia :
+        print(f"el nombre {nombre} no se encuentra en el stock")
+    
+def borrar_producto_id(lista_stock):
+    
+    codigo = str(obtener_entero("Ingrese el código del producto: ", "el código debe ser representado en un número entero."))
+    
+    if codigo in lista_stock:
+        
+        del lista_stock[codigo]
+        print(f"entrada {codigo} borrada")
+        
+    else:
+        print(f"la entrada {codigo} no se encuentra en el stock")
+    guardar_stock(lista_stock)

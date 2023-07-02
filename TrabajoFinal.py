@@ -1,5 +1,5 @@
 ###Gestion de control. Segunda version.
-from modulo_funciones import obtener_stock,ingreso_producto, busqueda_producto, modificar_producto, listado_productos,impresionGenral,busqueda_nombre,borrar_producto_id
+from paquete_funciones.modulo_funciones import obtener_stock,ingreso_producto, busqueda_producto, modificar_producto, listado_productos,impresionGenral,busqueda_nombre,borrar_producto_id
     
 print("""Bienvenido al Sistema de gestión y Control de stock""")
 

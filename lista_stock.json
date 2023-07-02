@@ -47,5 +47,12 @@
     "cantidad": 6,
     "precio": 100000.0,
     "importado": false
+  },
+  "2387": {
+    "producto": "parlante tyb",
+    "marca": "tyb black",
+    "cantidad": 23,
+    "precio": 95000.0,
+    "importado": false
   }
 }

@@ -13,10 +13,10 @@ def obtener_stock():
     return stock
 
 def guardar_stock(stock):
-    '''esta función actualiza los datos alojados en el diccionario Stock y lo vuelva en el archivo Json
+    '''esta función actualiza los datos alojados en el diccionario Stock y lo vuelva en el archivo Json.
     
-    Args:
-        stock (dic) : Diccionario que contiene un stock.
+    Args :
+        stock {dic} : Diccionario que contiene un stock.
     '''
     filename = 'lista_stock.json'
     with open(filename, 'w') as file :
@@ -24,10 +24,15 @@ def guardar_stock(stock):
         
 
 def ingreso_producto (lista_stock):
+    """Ingreso de un nuevo artículo en el stock y al final se actualiza el arvicho Json.
+
+    Args:
+        lista_stock {dic}: Diccionario que contiene el stock
+    """
     
     limpiar_pantalla()
      
-    codigo = obtener_entero("Ingrese el código del producto: ", "el código debe ser representado en un número entero.")
+    codigo =str( obtener_entero("Ingrese el código del producto: ", "el código debe ser representado en un número entero."))
     
     producto = input("Ingrese el nombre del producto: ").lower() 
     
@@ -46,7 +51,7 @@ def ingreso_producto (lista_stock):
     elif(importado_int == 2):
             importado=False
      
-    lista_stock[str(codigo)] = {'producto':producto,'marca': marca, 'cantidad':cantidad,'precio': precio ,'importado':importado}
+    lista_stock[codigo] = {'producto':producto,'marca': marca, 'cantidad':cantidad,'precio': precio ,'importado':importado}
     
     guardar_stock(lista_stock)
     
@@ -76,7 +81,6 @@ def busqueda_producto(lista_stock):
         else:
                 print("Vuelta al menú...")
         
-        #Me gustaria agreagar un mjs y una funcion en el caso de que si no esta le pregunte al usuario si desea crear una nueva entrada
 
 def modificar_producto(lista_stock):
     
@@ -84,7 +88,7 @@ def modificar_producto(lista_stock):
 
     codigo=input("Ingrese el producto a modificar: ").lower()
     
-    if codigo in lista_stock: #sigue en desarrollo, hay que agregar cositas... funciona y bien.
+    if codigo in lista_stock:
             
             print(f"producto : {lista_stock[codigo]['producto']}")
             
@@ -131,7 +135,7 @@ def listado_productos (lista_stock):
     
     if lista_stock:
         
-        encabezados = ['producto','marca', 'cantidad','precio','importado']
+        encabezados = ['id','producto','marca', 'cantidad','precio','importado']
         
         filas = [[codigo, datos["producto"], datos["marca"], datos["cantidad"],datos["precio"],datos["importado"]] for codigo, datos in lista_stock.items()]
 
@@ -142,23 +146,44 @@ def listado_productos (lista_stock):
         print("No hay entradas en la lista.")
         
 def impresionGenral(lista_stock):
-    print(lista_stock)
+    for codigo, producto in lista_stock.items():
+        print(f"{codigo} {producto}")
 
 
 def busqueda_nombre(lista_stock):
+    
     nombre=input("ingrese el nombre del producto a buscar: ")
+    
     coincidencia = False
+    
     for codigo, producto in lista_stock.items():
+        
         if nombre in producto['producto']:
+            
             if not coincidencia:
+                
                 print ("+","-" * 85,"+")
                 print ((f"{'producto':<20} | {'marca':<20} | {'cantidad':<20} | {'precio':<20}"))
                 print ("+","-" * 85,"+")
+                
                 coincidencia= True
+                
             print (f"{lista_stock[codigo]['producto']:<20} | {lista_stock[codigo]['marca']:<20} | {lista_stock[codigo]['cantidad']:<20} | {lista_stock[codigo]['precio']:<20}")
+            
             print ("+","-" * 85,"+")
             
     if not coincidencia :
         print(f"el nombre {nombre} no se encuentra en el stock")
     
+def borrar_producto_id(lista_stock):
+    
+    codigo = str(obtener_entero("Ingrese el código del producto: ", "el código debe ser representado en un número entero."))
+    
+    if codigo in lista_stock:
         
+        del lista_stock[codigo]
+        print(f"entrada {codigo} borrada")
+        
+    else:
+        print(f"la entrada {codigo} no se encuentra en el stock")
+    guardar_stock(lista_stock)

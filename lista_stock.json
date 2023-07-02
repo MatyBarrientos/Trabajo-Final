@@ -13,13 +13,6 @@
     "precio": 180000.0,
     "importado": false
   },
-  "3350": {
-    "producto": "teclado rgb",
-    "marca": "logitech",
-    "cantidad": 60,
-    "precio": 7500.0,
-    "importado": true
-  },
   "9850": {
     "producto": "gabinete mid tower metal",
     "marca": "sentay",

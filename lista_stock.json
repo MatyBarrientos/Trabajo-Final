@@ -54,5 +54,12 @@
     "cantidad": 23,
     "precio": 95000.0,
     "importado": false
+  },
+  "1479": {
+    "producto": "joystick ps4 negro",
+    "marca": "sony",
+    "cantidad": 32,
+    "precio": 35000.0,
+    "importado": false
   }
 }

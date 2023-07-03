@@ -1,12 +1,12 @@
 ###Gestion de control. Segunda version.
 from paquete_funciones.modulo_funciones import obtener_stock,ingreso_producto, busqueda_producto, modificar_producto, listado_productos,impresionGenral,busqueda_nombre,borrar_producto_id
     
-print("""Bienvenido al Sistema de gestión y Control de stock""")
+print("""\nBienvenido al Sistema de gestión y Control de stock""")
 
 stock = obtener_stock()
 
 while True:
-    print("""Seleccione su Opción.
+    print("""\nSeleccione su Opción.
           
           1 - Ver listado de stock.
           2 - Ingresar producto.
@@ -23,33 +23,33 @@ while True:
         except:
             print("Tiene que ser un valor númerico: ")
     if opcion == 1: 
-        print("""\nOpcion 1
-Listado de los productos en el inventario.""")   
+        print("""Opcion 1
+Listado de los productos en el inventario.\n""")   
         listado_productos(stock) 
          
     elif opcion == 2: 
-        print("""\nOpcion 2
-Ingreso de un nuevo producto dentro del stock""")
+        print("""Opcion 2
+Ingreso de un nuevo producto dentro del stock.\n""")
         ingreso_producto(stock)
         
     elif opcion == 3:
-        print("""\nOpcion 3
-Eliminar un artículo del Stock.""")
+        print("""Opcion 3
+Eliminar un artículo del Stock.\n""")
         borrar_producto_id(stock)
         
     elif opcion == 4:   
-        print("""\nOpcion 4
-Buscaremos un artículo por código en el stock.""")
+        print("""Opcion 4
+Buscaremos un artículo por código en el stock.\n""")
         busqueda_producto(stock)
 
     elif opcion == 5:
-        print("""\nOpcion 5
-Buscaremos un artículo por nombre en el stock.""")  
+        print("""Opcion 5
+Buscaremos un artículo por nombre en el stock.\n""")  
         busqueda_nombre(stock)
   
     elif opcion == 6:
-        print("""\nOpcion 6
-Modificar producto.""")
+        print("""Opcion 6
+Modificar producto.\n""")
         modificar_producto(stock)
                            
     elif opcion == 7:

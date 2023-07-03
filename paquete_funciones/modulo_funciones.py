@@ -22,7 +22,23 @@ def guardar_stock(stock):
     with open(filename, 'w') as file :
         json.dump(stock, file, indent = 2)
         
-
+def listado_productos (lista_stock): 
+    #muestro por pantalla en formato de tabla todos los articulos del diccionario (quedó bonito)
+    limpiar_pantalla()
+    
+    if lista_stock: #Si el diccionario no está vacio se procede la siguiente manera.
+        
+        encabezados = ['id','producto','marca', 'cantidad','precio','importado'] #la variable encabezado es una lista y tiene los encabezados de la tabla  
+        
+        filas = [[codigo, datos["producto"], datos["marca"], datos["cantidad"],datos["precio"],datos["importado"]] for codigo, datos in lista_stock.items()]
+        #fila es una lista creada por compresión donde se toma cada value del diccionario "stock" y se lo recorre mediente un for. (lo hice así para ahorrar un par de lineas)
+        tabla = tabulate(filas, headers=encabezados, tablefmt='fancy_grid') 
+        #utilizé la funcion tabulate recibé 3 argumentos: filas,el encabezado (ambos son listas con contenido del stock) y tablefmt es para darle el estilo de la tabla me gustó "fancy_grid".
+        print(tabla)
+    else:
+        print("No hay entradas en la lista.")
+        #en caso de estar vacio, muestra este mjs.
+        
 def ingreso_producto (lista_stock):
     """Ingreso de un nuevo artículo en el stock y al final se actualiza el arvicho Json.
 
@@ -55,6 +71,22 @@ def ingreso_producto (lista_stock):
     #creación del diccionario con sus respectivas keys y values.
     guardar_stock(lista_stock) #se llama a la funcion guardar_stock para actualizar los datos en el archivo .Json
     
+def borrar_producto_id(lista_stock):
+    """se borra determinada entrada, se los busca por codigo
+
+    Args:
+        lista_stock (dicc): diccionario que almacena el stock
+    """
+    codigo = str(obtener_entero("Ingrese el código del producto: ", "el código debe ser representado en un número entero."))
+    
+    if codigo in lista_stock:
+        
+        del lista_stock[codigo]
+        print(f"entrada {codigo} borrada")
+        
+    else:
+        print(f"la entrada {codigo} no se encuentra en el stock")
+    guardar_stock(lista_stock)
 
 def busqueda_producto(lista_stock):
     """_Devuelve por pantalla los datos de un determinado producto_
@@ -84,8 +116,37 @@ def busqueda_producto(lista_stock):
                 ingreso_producto(lista_stock) #se llama a una función dentro de otra función
         else:
                 print("Vuelta al menú...") #mjs de ***vuelta al menú.***
-        
+                
+def busqueda_nombre(lista_stock): 
+    """similar a la busqueda por código pero te muestra los producctos que es su nombre tengan coincidencias con la cadena ingresada
 
+    Args:
+        lista_stock (dicc): datos del stock almacenados en el diccionario
+    """
+    
+    nombre=input("ingrese el nombre del producto a buscar: ")
+    
+    coincidencia = False
+    
+    for codigo, producto in lista_stock.items():
+        
+        if nombre in producto['producto']: #recorremos la lista y buscamos dentro de cada value producto["producto"] y vemos si hay coincidencia con el input
+            
+            if not coincidencia: #si concidencia es verdadero imprime una vez lo siguiente
+                
+                print ("+","-" * 85,"+")
+                print ((f"{'producto':<20} | {'marca':<20} | {'cantidad':<20} | {'precio':<20}"))
+                print ("+","-" * 85,"+")
+                
+                coincidencia= True
+                
+            print (f"{lista_stock[codigo]['producto']:<20} | {lista_stock[codigo]['marca']:<20} | {lista_stock[codigo]['cantidad']:<20} | {lista_stock[codigo]['precio']:<20}") #info del producto/os que coinciden con el string ingresado por teclado
+            
+            print ("+","-" * 85,"+")
+            
+    if not coincidencia :
+        print(f"el nombre {nombre} no se encuentra en el stock") #si no hay coincidencia, lo mostramos como mjs
+        
 def modificar_producto(lista_stock):
     """_Pide un codigo y sí se encuentra dentro del stock te da la opcion de modificarlo_
 
@@ -136,72 +197,8 @@ def modificar_producto(lista_stock):
         print(f"No se encuentra en la lista de stock el producto {codigo} ")
         #si no se encuentra en el stock lo muestra por pantalla
     guardar_stock(lista_stock) #siempre se llama a esta funcion para poder actualizar los datos
-            
-def listado_productos (lista_stock):
-    #muestro por pantalla en formato de tabla todos los articulos del diccionario (quedó bonito)
-    limpiar_pantalla()
-    
-    if lista_stock: #Si el diccionario no está vacio se procede la siguiente manera.
-        
-        encabezados = ['id','producto','marca', 'cantidad','precio','importado'] #la variable encabezado es una lista y tiene los encabezados de la tabla  
-        
-        filas = [[codigo, datos["producto"], datos["marca"], datos["cantidad"],datos["precio"],datos["importado"]] for codigo, datos in lista_stock.items()]
-        #fila es una lista creada por compresión donde se toma cada value del diccionario "stock" y se lo recorre mediente un for. (lo hice así para ahorrar un par de lineas)
-        tabla = tabulate(filas, headers=encabezados, tablefmt='fancy_grid') 
-        #utilizé la funcion tabulate recibé 3 argumentos: filas,el encabezado (ambos son listas con contenido del stock) y tablefmt es para darle el estilo de la tabla me gustó "fancy_grid".
-        print(tabla)
-    else:
-        print("No hay entradas en la lista.")
-        #en caso de estar vacio, muestra este mjs.
-        
+                   
 def impresionGenral(lista_stock):
     for codigo, producto in lista_stock.items():
         print(f"{codigo} {producto}")
-
-
-def busqueda_nombre(lista_stock): 
-    """similar a la busqueda por código pero te muestra los producctos que es su nombre tengan coincidencias con la cadena ingresada
-
-    Args:
-        lista_stock (dicc): datos del stock almacenados en el diccionario
-    """
-    
-    nombre=input("ingrese el nombre del producto a buscar: ")
-    
-    coincidencia = False
-    
-    for codigo, producto in lista_stock.items():
-        
-        if nombre in producto['producto']: #recorremos la lista y buscamos dentro de cada value producto["producto"] y vemos si hay coincidencia con el input
-            
-            if not coincidencia: #si concidencia es verdadero imprime una vez lo siguiente
-                
-                print ("+","-" * 85,"+")
-                print ((f"{'producto':<20} | {'marca':<20} | {'cantidad':<20} | {'precio':<20}"))
-                print ("+","-" * 85,"+")
-                
-                coincidencia= True
-                
-            print (f"{lista_stock[codigo]['producto']:<20} | {lista_stock[codigo]['marca']:<20} | {lista_stock[codigo]['cantidad']:<20} | {lista_stock[codigo]['precio']:<20}") #info del producto/os que coinciden con el string ingresado por teclado
-            
-            print ("+","-" * 85,"+")
-            
-    if not coincidencia :
-        print(f"el nombre {nombre} no se encuentra en el stock") #si no hay coincidencia, lo mostramos como mjs
-    
-def borrar_producto_id(lista_stock):
-    """se borra determinada entrada, se los busca por codigo
-
-    Args:
-        lista_stock (dicc): diccionario que almacena el stock
-    """
-    codigo = str(obtener_entero("Ingrese el código del producto: ", "el código debe ser representado en un número entero."))
-    
-    if codigo in lista_stock:
-        
-        del lista_stock[codigo]
-        print(f"entrada {codigo} borrada")
-        
-    else:
-        print(f"la entrada {codigo} no se encuentra en el stock")
-    guardar_stock(lista_stock)
+ 

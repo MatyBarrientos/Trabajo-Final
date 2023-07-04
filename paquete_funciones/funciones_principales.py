@@ -1,4 +1,4 @@
-from paquete_funciones.funciones_generales import obtener_entero, obtener_flotante, limpiar_pantalla
+from paquete_funciones.funciones_auxiliares import obtener_entero, obtener_flotante, limpiar_pantalla
 from tabulate import tabulate #importe el paquete de la libreria tabulate para mostrar info por pantalla https://pypi.org/project/tabulate/
 import json
 

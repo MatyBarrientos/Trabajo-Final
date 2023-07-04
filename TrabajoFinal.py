@@ -1,6 +1,6 @@
 ###Gestion de control. Segunda version.
-from paquete_funciones.modulo_funciones import obtener_stock, listado_productos, ingreso_producto, busqueda_codigo, busqueda_nombre, busqueda_marca, modificar_producto, borrar_producto_id, impresionGeneral
-from paquete_funciones.funciones_generales import obtener_entero, limpiar_pantalla
+from paquete_funciones.funciones_principales import obtener_stock, listado_productos, ingreso_producto, busqueda_codigo, busqueda_nombre, busqueda_marca, modificar_producto, borrar_producto_id, impresionGeneral
+from paquete_funciones.funciones_auxiliares import obtener_entero, limpiar_pantalla
     
 print("""\nBienvenido al Sistema de gestión y Control de stock""")
 

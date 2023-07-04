@@ -28,10 +28,10 @@
     "importado": true
   },
   "6985": {
-    "producto": "escritorio regulable",
-    "marca": "aglomerado inc",
-    "cantidad": 5,
-    "precio": 45000.0,
+    "producto": "escritorio regulable blanco",
+    "marca": "sodimac",
+    "cantidad": 10,
+    "precio": 60000.0,
     "importado": true
   },
   "6598": {
@@ -61,5 +61,19 @@
     "cantidad": 32,
     "precio": 35000.0,
     "importado": false
+  },
+  "1111": {
+    "producto": "parlante bluetooth",
+    "marca": "poos",
+    "cantidad": 40,
+    "precio": 6500.0,
+    "importado": true
+  },
+  "1593": {
+    "producto": "router wifi 4 antenas",
+    "marca": "huawei",
+    "cantidad": 16,
+    "precio": 7000.0,
+    "importado": true
   }
 }

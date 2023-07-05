@@ -27,13 +27,6 @@
     "precio": 8600.0,
     "importado": true
   },
-  "6985": {
-    "producto": "escritorio regulable blanco",
-    "marca": "sodimac",
-    "cantidad": 10,
-    "precio": 60000.0,
-    "importado": true
-  },
   "6598": {
     "producto": "auriculares cableados verdes",
     "marca": "razer",
@@ -74,6 +67,13 @@
     "marca": "huawei",
     "cantidad": 16,
     "precio": 7000.0,
+    "importado": true
+  },
+  "6985": {
+    "producto": "silla reclinable ed esp",
+    "marca": "tower",
+    "cantidad": 78,
+    "precio": 9500.0,
     "importado": true
   }
 }

@@ -21,25 +21,25 @@ while True:
 
     if opcion == 1:
         limpiar_pantalla() 
-        print("""Opcion 1
+        print("""Opción 1
 Listado de los productos en el inventario.\n""")   
         listado_productos(stock) 
          
     elif opcion == 2:
         limpiar_pantalla() 
-        print("""Opcion 2
+        print("""Opción 2
 Ingreso de un nuevo producto dentro del stock.\n""")
         ingreso_producto(stock)
         
     elif opcion == 3:
         limpiar_pantalla()
-        print("""Opcion 3
+        print("""Opción 3
 Eliminar un artículo del Stock.\n""")
         borrar_producto_id(stock)
         
     elif opcion == 4:
         limpiar_pantalla()   
-        print("""Opcion 4.\n""")
+        print("""Opción 4.\n""")
 
         while True:
             print("""\nSub-menú busquedas
@@ -62,18 +62,18 @@ Eliminar un artículo del Stock.\n""")
                 print("\nVuelta al menú principal.")
                 break
             else:
-                print("""\nOpcion incorrecta
+                print("""\nOpción incorrecta
 Vuelta al submenú.""")
 
     elif opcion == 5:
         limpiar_pantalla()
-        print("""Opcion 5
+        print("""Opción 5
 Modificar producto.\n""")
         modificar_producto(stock)
                            
     elif opcion == 6:
         limpiar_pantalla()
-        print("""\nOpcion 6
+        print("""\Opción 6
 Saludos.
 Adios!!!!!!!!!!!""")
         break
@@ -84,7 +84,7 @@ muestra como es el diccionario que contiene diccionario""")
         impresionGeneral(stock)   
         
     else:
-        print("""Opcion Incorrecta
+        print("""Opción Incorrecta
 Vuelta al menú""")
         
         

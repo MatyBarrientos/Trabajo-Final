@@ -91,12 +91,13 @@ def busqueda_codigo(lista_stock):
     Args:
         lista_stock (Dic): _el diccionario con los datos del stock_
     """
-    codigo = str(obtener_entero("Ingrese el nombre del producto: ", "Opción Invalida, debe ser un número entero: "))
+    codigo = str(obtener_entero("Ingrese el código del producto: ", "Opción Invalida, debe ser un número entero: "))
     
     if codigo in lista_stock: 
         encabezados = ['id','producto','marca', 'cantidad','precio','importado']
-        fila = [[codigo, lista_stock[codigo]['producto'], lista_stock[codigo]["marca"], lista_stock[codigo]["cantidad"],lista_stock[codigo]["precio"],lista_stock[codigo]["importado"]]]
-        tabla=tabulate(fila,headers=encabezados, tablefmt='fancy_grid')
+        #encabezado de la funcion tabulate (2do argumento) es una lista con strings
+        fila = [[codigo, lista_stock[codigo]['producto'], lista_stock[codigo]["marca"], lista_stock[codigo]["cantidad"],lista_stock[codigo]["precio"],lista_stock[codigo]["importado"]]] #datos mostrados en la tabla (1er parametro) es una lista
+        tabla=tabulate(fila,headers=encabezados, tablefmt='fancy_grid') #se crea la variable tabla y se llama la funcion con los parámetros de arriba 
         print(tabla)            
     else:
         print(f"No se ha encontrado una entrada con la descripción {codigo}")
@@ -116,18 +117,18 @@ def busqueda_nombre(lista_stock):
         lista_stock (dicc): datos del stock almacenados en el diccionario
     """
     nombre=input("ingrese el nombre del producto a buscar: ")
-    encabezados = ['id','producto','marca', 'cantidad','precio','importado']
-    fila=[]
-    for codigo, producto in lista_stock.items():
-        if nombre in producto['producto']:
+    encabezados = ['id','producto','marca', 'cantidad','precio','importado'] #encabezado de la funcion tabulate (2do argumento) es una lista con strings
+    fila=[] #en esta lista vamos a cargar los datos del diccionario en caso de que se cumpla el condicional
+    for codigo, producto in lista_stock.items(): #se recorre el diccionario
+        if nombre in producto['producto']: #se verifica la condicion (el que nombre a buscar se encuentre dentro del valor producto['producto'])
              
-            fila.append([codigo, lista_stock[codigo]['producto'], lista_stock[codigo]["marca"], lista_stock[codigo]["cantidad"],lista_stock[codigo]["precio"],lista_stock[codigo]["importado"]])
+            fila.append([codigo, lista_stock[codigo]['producto'], lista_stock[codigo]["marca"], lista_stock[codigo]["cantidad"],lista_stock[codigo]["precio"],lista_stock[codigo]["importado"]]) #si coincide mediante append lo agregamos a la lista
             
-    if fila:
+    if fila: #si hay datos, crea la variable tabla y se cargan los argumentos y los muestra. 
         tabla=tabulate(fila,headers=encabezados, tablefmt='fancy_grid')
         print(tabla)
     else:
-        print(f"No hubo coincidencia con el nombre {nombre}")
+        print(f"No hubo coincidencia con el nombre {nombre}") #en caso de no haber match, no se muestra nada.
       
 def busqueda_marca(lista_stock):
     """similar a la busqueda por código pero te muestra los producctos que es su nombre tengan coincidencias con la cadena ingresada
@@ -138,14 +139,14 @@ def busqueda_marca(lista_stock):
     
     marca=input("ingrese la marca: ")
     
-    encabezados = ['id','producto','marca', 'cantidad','precio','importado']
-    fila=[]
-    for codigo, producto in lista_stock.items():
-        if marca in producto['marca']:
+    encabezados = ['id','producto','marca', 'cantidad','precio','importado'] #encabezado de la funcion tabulate (2do argumento) es una lista con strings
+    fila=[] #en esta lista vamos a cargar los datos del diccionario en caso de que se cumpla el condicional
+    for codigo, producto in lista_stock.items(): #se recorre el diccionario
+        if marca in producto['marca']: #se verifica la condicion (el que nombre a buscar se encuentre dentro del valor producto['marca'])
              
             fila.append([codigo, lista_stock[codigo]['producto'], lista_stock[codigo]["marca"], lista_stock[codigo]["cantidad"],lista_stock[codigo]["precio"],lista_stock[codigo]["importado"]])
             
-    if fila:
+    if fila:  #si hay datos, crea la variable tabla y se cargan los argumentos y los muestra.
         tabla=tabulate(fila,headers=encabezados, tablefmt='fancy_grid')
         print(tabla)
     else:
@@ -159,7 +160,7 @@ def modificar_producto(lista_stock):
     """
     limpiar_pantalla()
 
-    codigo=input("Ingrese el producto a modificar: ").lower()
+    codigo =str( obtener_entero("Ingrese el código del producto a modificar: ", "el código debe ser representado en un número entero."))
     
     if codigo in lista_stock: #un if para verificar de que el código se encuentre dentro del stock (el código siempre es la llave del diccionario)
             
@@ -196,7 +197,7 @@ def modificar_producto(lista_stock):
                 importado=False
             
             #acá se actualizan los values del dic que contiene toda la info
-            lista_stock[str(codigo)] = {'producto':producto,'marca': marca, 'cantidad':cantidad,'precio': precio ,'importado':importado}
+            lista_stock[codigo] = {'producto':producto,'marca': marca, 'cantidad':cantidad,'precio': precio ,'importado':importado}
     else:
         print(f"No se encuentra en la lista de stock el producto {codigo} ")
         #si no se encuentra en el stock lo muestra por pantalla
@@ -206,12 +207,13 @@ def impresionGeneral(lista_stock):
     for codigo, producto in lista_stock.items():
         print(f"{codigo} {producto}")
  
-# #si el código se encuentra dentro de la lista del stock, te muestra los datos (un choclo hermoso)
+# #si el código se encuentra dentro de la lista del stock, te muestra los datos mediante formateo de texto (un choclo hermoso) y no era muy estético
 # print(f"El código {codigo} se encuentra en el inventario.")
 # print ((f"{'producto':<15} | {'marca':<15} | {'cantidad':<15} | {'precio':<15}"))
 # print ("-" * 65)
 # print (f"{lista_stock[codigo]['producto']:<15} | {lista_stock[codigo]['marca']:<15} | {lista_stock[codigo]['cantidad']:<15} | {lista_stock[codigo]['precio']:<15}")
 # print ("-" * 65)
 
-
+#pude crear las fialas para los argumentos de tabulate por compresión, se hacián dificil de leerlo pero es una buena manera y quizás es más efectiva.
+#podes colocar los condicionales dentro de la declaración.
 # fila = [[codigo, lista_stock[codigo]['producto'], lista_stock[codigo]["marca"], lista_stock[codigo]["cantidad"],lista_stock[codigo]["precio"],lista_stock[codigo]["importado"]]for codigo, producto in lista_stock.items() if nombre in producto['producto']]

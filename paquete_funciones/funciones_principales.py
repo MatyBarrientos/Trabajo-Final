@@ -47,6 +47,10 @@ def ingreso_producto (lista_stock):
     
     codigo =str( obtener_entero("Ingrese el código del producto: ", "el código debe ser representado en un número entero."))
     #utilizamos la funcion obtener_entero para no estar poniendo condicionales cada vez que se pida por consola algún valor.
+    while codigo in lista_stock: #
+        print(f"""el {codigo} ya fue ingresado y le pertenece al producto {lista_stock[codigo]['producto']}/{lista_stock[codigo]['marca']}""")
+        codigo =str( obtener_entero("Ingrese otro código: ", "el código debe ser representado en un número entero."))
+        
     producto = input("Ingrese el nombre del producto: ").lower() 
     
     marca = input("Ingrese la marca: ").lower() 
@@ -205,7 +209,7 @@ def modificar_producto(lista_stock):
                    
 def impresionGeneral(lista_stock):
     for codigo, producto in lista_stock.items():
-        print(f"{codigo} {producto}")
+        print(f"{type(codigo)} :({codigo}) {producto}")
  
 # #si el código se encuentra dentro de la lista del stock, te muestra los datos mediante formateo de texto (un choclo hermoso) y no era muy estético
 # print(f"El código {codigo} se encuentra en el inventario.")

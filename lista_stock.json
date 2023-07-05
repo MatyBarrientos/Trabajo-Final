@@ -75,5 +75,26 @@
     "cantidad": 78,
     "precio": 9500.0,
     "importado": true
+  },
+  "1794": {
+    "producto": "funda tablet a10",
+    "marca": "case-guard",
+    "cantidad": 85,
+    "precio": 6500.0,
+    "importado": true
+  },
+  "1796": {
+    "producto": "disco rigido 1tb",
+    "marca": "wd",
+    "cantidad": 41,
+    "precio": 16000.0,
+    "importado": false
+  },
+  "1": {
+    "producto": "resma a4",
+    "marca": "exito",
+    "cantidad": 500,
+    "precio": 800.0,
+    "importado": true
   }
 }

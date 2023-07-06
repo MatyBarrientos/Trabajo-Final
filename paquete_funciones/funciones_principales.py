@@ -13,7 +13,7 @@ def obtener_stock():
     return stock
 
 def guardar_stock(stock):
-    '''esta función actualiza los datos alojados en el diccionario Stock y lo vuelva en el archivo Json.
+    '''esta función actualiza los datos alojados en el diccionario Stock y lo vuelca en el archivo Json.
     
     Args :
         stock {dic} : Diccionario que contiene un stock.
@@ -35,7 +35,7 @@ def listado_productos (lista_stock):
         #utilizé la funcion tabulate recibé 3 argumentos: filas,el encabezado (ambos son listas con contenido del stock) y tablefmt es para darle el estilo de la tabla me gustó "fancy_grid".
         print(tabla)
     else:
-        print("No hay entradas en la lista.")
+        print("No hay entradas en el stock.")
         #en caso de estar vacio, muestra este mjs.
         
 def ingreso_producto (lista_stock):
@@ -48,7 +48,7 @@ def ingreso_producto (lista_stock):
     codigo =str( obtener_entero("Ingrese el código del producto: ", "el código debe ser representado en un número entero."))
     #utilizamos la funcion obtener_entero para no estar poniendo condicionales cada vez que se pida por consola algún valor.
     while codigo in lista_stock: #
-        print(f"""el {codigo} ya fue ingresado y le pertenece al producto {lista_stock[codigo]['producto']}/{lista_stock[codigo]['marca']}""")
+        print(f"""El {codigo} ya fue ingresado y le pertenece al producto *{lista_stock[codigo]['producto']}*/*{lista_stock[codigo]['marca']}*""")
         codigo =str( obtener_entero("Ingrese otro código: ", "el código debe ser representado en un número entero."))
         
     producto = input("Ingrese el nombre del producto: ").lower() 
@@ -59,7 +59,7 @@ def ingreso_producto (lista_stock):
     
     precio = obtener_flotante("Ingrese el precio unitario del producto: $","El precio debe ser representado en números.")
     #utilizamos la funcion obtener_flotante para no estar poniendo condicionales cada vez que se pida por consola algún valor.
-    
+        
     importado_int = obtener_entero("El producto es de origen nacional? : (1-Sí o 2-No): ", "Opción Invalida (1-Sí o 2-No): ")
     while importado_int != 1 and importado_int != 2:
         importado_int = obtener_entero("El producto es de origen nacional? : (1-Sí o 2-No): ", "Opción Invalida (1-Sí o 2-No): ")  
@@ -69,6 +69,7 @@ def ingreso_producto (lista_stock):
             importado = False
      
     lista_stock[codigo] = {'producto' : producto, 'marca' : marca, 'cantidad' : cantidad, 'precio' : precio, 'importado' : importado}
+    print ("Artículo agregado")
     #creación del diccionario con sus respectivas keys y values.
     guardar_stock(lista_stock) #se llama a la funcion guardar_stock para actualizar los datos en el archivo .Json
     
@@ -78,15 +79,15 @@ def borrar_producto_id(lista_stock):
     Args:
         lista_stock (dicc): diccionario que almacena el stock
     """
-    codigo = str(obtener_entero("Ingrese el código del producto: ", "el código debe ser representado en un número entero."))
+    codigo = str(obtener_entero("Ingrese el código del producto: ", "El código debe ser representado numeros enteros."))
     
     if codigo in lista_stock:
         
         del lista_stock[codigo]
-        print(f"entrada {codigo} borrada")
+        print(f"Producto *{codigo}*/*{lista_stock[codigo]['producto']}* eliminado")
         
     else:
-        print(f"la entrada {codigo} no se encuentra en el stock")
+        print(f"La entrada *{codigo}* no se encuentra en el stock.")
     guardar_stock(lista_stock)
 
 def busqueda_codigo(lista_stock):
@@ -104,7 +105,7 @@ def busqueda_codigo(lista_stock):
         tabla=tabulate(fila,headers=encabezados, tablefmt='fancy_grid') #se crea la variable tabla y se llama la funcion con los parámetros de arriba 
         print(tabla)            
     else:
-        print(f"No se ha encontrado una entrada con la descripción {codigo}")
+        print(f"No se ha encontrado una entrada con el código {codigo}")
         #si no está te muestra un mjs diciendo que no está y procede a preguntar si lo querés agregar?, en caso de ser afirmativo llama a la funcion ingreso_producto()
         opcion = obtener_entero(f"Desea ingresar {codigo} a la lista? (1='Si' o 2='No') : ","Opción Invalida, debe ser un número entero (1='Si' o 2='No')")
         while opcion != 1 and opcion != 2: #un while para quedar en bucle en caso de que no sean los valores esperados "1 o 2"
@@ -132,7 +133,7 @@ def busqueda_nombre(lista_stock):
         tabla=tabulate(fila,headers=encabezados, tablefmt='fancy_grid')
         print(tabla)
     else:
-        print(f"No hubo coincidencia con el nombre {nombre}") #en caso de no haber match, no se muestra nada.
+        print(f"No hubo coincidencia con el nombre *{nombre}*") #en caso de no haber match, no se muestra nada.
       
 def busqueda_marca(lista_stock):
     """similar a la busqueda por código pero te muestra los producctos que es su nombre tengan coincidencias con la cadena ingresada
@@ -154,7 +155,7 @@ def busqueda_marca(lista_stock):
         tabla=tabulate(fila,headers=encabezados, tablefmt='fancy_grid')
         print(tabla)
     else:
-        print(f"No hubo coincidencia con la marca : {marca}")       
+        print(f"No hubo coincidencia con la marca : *{marca}*")       
         
 def modificar_producto(lista_stock):
     """_Pide un codigo y sí se encuentra dentro del stock te da la opcion de modificarlo_
@@ -209,7 +210,7 @@ def modificar_producto(lista_stock):
                    
 def impresionGeneral(lista_stock):
     for codigo, producto in lista_stock.items():
-        print(f"{type(codigo)} :({codigo}) {producto}")
+        print(f"({codigo}) {producto}")
  
 # #si el código se encuentra dentro de la lista del stock, te muestra los datos mediante formateo de texto (un choclo hermoso) y no era muy estético
 # print(f"El código {codigo} se encuentra en el inventario.")

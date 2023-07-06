@@ -7,14 +7,13 @@ print("""\nBienvenido al Sistema de gestión y Control de stock""")
 stock = obtener_stock()
 
 while True:
-    print("""\nSeleccione su Opción.
-          
-          1 - Ver listado de stock.
-          2 - Ingresar producto.
-          3 - Borrar producto.
-          4 - Busqueda.
-          5 - Modificar datos del producto.
-          6 - Salir. 
+    print("""\nSeleccione su Opción.\n
+          1 - Ver listado de stock.\n
+          2 - Ingresar producto.\n
+          3 - Borrar producto.\n
+          4 - Busqueda.\n
+          5 - Modificar datos del producto.\n
+          6 - Salir.\n 
            """)
 
     opcion = obtener_entero("Ingrese su opción: ","Tiene que ser un valor númerico: ")
@@ -42,23 +41,26 @@ Eliminar un artículo del Stock.\n""")
         print("""Opción 4.\n""")
 
         while True:
-            print("""\nSub-menú busquedas
-                  
-1 - Buscar productos por código.
-
-2 - Buscar productos por nombre.
-
-3 - Buscar productos por marca.
-
+            print("""\nSub-menú busquedas\n
+1 - Buscar productos por código.\n
+2 - Buscar productos por nombre.\n
+3 - Buscar productos por marca.\n
 4 - Salir.\n""")
             opcion_sub=obtener_entero("Ingrese su opción de busqueda: ","Tiene que ser un valor númerico: ")
             if opcion_sub == 1:
+                limpiar_pantalla()
+                print("""Opción 1\nBusqueda por código.\n""")
                 busqueda_codigo(stock)
             elif opcion_sub == 2:
+                limpiar_pantalla()
+                print("""Opción 2\nBusqueda por nombre.\n""")
                 busqueda_nombre(stock)
             elif opcion_sub == 3:
+                limpiar_pantalla()
+                print("""Opción 3\nBusqueda por marca.\n""")
                 busqueda_marca(stock)
             elif opcion_sub == 4:
+                limpiar_pantalla()
                 print("\nVuelta al menú principal.")
                 break
             else:
@@ -74,8 +76,7 @@ Modificar producto.\n""")
     elif opcion == 6:
         limpiar_pantalla()
         print("""\Opción 6
-Saludos.
-Adios!!!!!!!!!!!""")
+Saludos.\nAdios!!!!!!!!!!!""")
         break
     elif opcion ==10:
         limpiar_pantalla()

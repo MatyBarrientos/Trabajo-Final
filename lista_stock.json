@@ -1,100 +1,296 @@
 {
-  "5260": {
-    "producto": "calculadora cient\u00edfica",
-    "marca": "mgcasio",
-    "cantidad": 32,
-    "precio": 14000.0,
-    "importado": false
-  },
-  "9632": {
-    "producto": "led 49 pulgadas",
-    "marca": "lg",
-    "cantidad": 12,
-    "precio": 180000.0,
-    "importado": false
-  },
-  "9850": {
-    "producto": "gabinete mid tower metal",
-    "marca": "sentay",
-    "cantidad": 12,
-    "precio": 25000.0,
-    "importado": false
-  },
-  "1234": {
-    "producto": "parlantes negro/amarillos",
-    "marca": "edifer",
-    "cantidad": 12,
-    "precio": 8600.0,
-    "importado": true
-  },
-  "6598": {
-    "producto": "auriculares cableados verdes",
-    "marca": "razer",
-    "cantidad": 36,
-    "precio": 45000.0,
-    "importado": false
-  },
-  "7596": {
-    "producto": "gabinete white espejado",
-    "marca": "corsair",
-    "cantidad": 6,
-    "precio": 100000.0,
-    "importado": false
-  },
-  "2387": {
-    "producto": "parlante tyb",
-    "marca": "tyb black",
-    "cantidad": 23,
-    "precio": 95000.0,
-    "importado": false
-  },
-  "1479": {
-    "producto": "joystick ps4 negro",
-    "marca": "sony",
-    "cantidad": 32,
-    "precio": 35000.0,
-    "importado": false
-  },
-  "1111": {
-    "producto": "parlante bluetooth",
-    "marca": "poos",
-    "cantidad": 40,
-    "precio": 6500.0,
-    "importado": true
-  },
-  "1593": {
-    "producto": "router wifi 4 antenas",
-    "marca": "huawei",
-    "cantidad": 16,
-    "precio": 7000.0,
-    "importado": true
-  },
-  "6985": {
-    "producto": "silla reclinable ed esp",
-    "marca": "tower",
+  "2922": {
+    "producto": "smart tv led 75\" 75pud8507/77 4k ultra hd ambilight",
+    "marca": "philips",
     "cantidad": 78,
-    "precio": 9500.0,
+    "precio": 50999.0,
     "importado": true
   },
-  "1794": {
-    "producto": "funda tablet a10",
-    "marca": "case-guard",
-    "cantidad": 85,
-    "precio": 6500.0,
+  "2933": {
+    "producto": "smart tv qled 55\" qn55q65bagczb 4k ultra hd",
+    "marca": "samsung",
+    "cantidad": 46,
+    "precio": 346999.0,
     "importado": true
   },
-  "1796": {
-    "producto": "disco rigido 1tb",
-    "marca": "wd",
-    "cantidad": 41,
-    "precio": 16000.0,
+  "3001": {
+    "producto": "smart tv led nanocell 65\" ultra hd ai thinq",
+    "marca": "lg",
+    "cantidad": 30,
+    "precio": 473999.0,
+    "importado": true
+  },
+  "2996": {
+    "producto": "smart tv led 50\" l50c635 4k uhd",
+    "marca": "tcl",
+    "cantidad": 20,
+    "precio": 160999.0,
+    "importado": true
+  },
+  "3003": {
+    "producto": "smart tv oled 65\" oled65c2psa ultra hd 4k",
+    "marca": "lg",
+    "cantidad": 17,
+    "precio": 999999.0,
     "importado": false
   },
-  "1": {
-    "producto": "resma a4",
-    "marca": "exito",
-    "cantidad": 500,
-    "precio": 800.0,
+  "2999": {
+    "producto": "smart tv led 75\" 75u60h 4k ultra hd",
+    "marca": "hisense",
+    "cantidad": 36,
+    "precio": 568419.5,
+    "importado": true
+  },
+  "2907": {
+    "producto": "smart tv led 32\" dk32x5050 hd",
+    "marca": "noblex",
+    "cantidad": 80,
+    "precio": 71999.0,
+    "importado": true
+  },
+  "2982": {
+    "producto": " smart tv led 55\" ls03bc 4k ultra hd frame nogal",
+    "marca": "samsung",
+    "cantidad": 41,
+    "precio": 499999.0,
+    "importado": false
+  },
+  "3303": {
+    "producto": "celular galaxy a54 6.4\" 5g 8+128gb lima",
+    "marca": "samsung",
+    "cantidad": 100,
+    "precio": 209999.0,
+    "importado": false
+  },
+  "3305": {
+    "producto": "celular g13 ds 6.53\" 4/128gb azul difuso",
+    "marca": "motorola",
+    "cantidad": 10,
+    "precio": 79999.0,
+    "importado": true
+  },
+  "2989": {
+    "producto": "celular  405 6.6\" 2/64gb negro",
+    "marca": "tcl",
+    "cantidad": 47,
+    "precio": 42999.0,
+    "importado": true
+  },
+  "3300": {
+    "producto": "celular  qrash 6\" 2/32gb rojo",
+    "marca": "quantum",
+    "cantidad": 40,
+    "precio": 40999.0,
+    "importado": true
+  },
+  "2972": {
+    "producto": "celular edge 30 fusion 6.55\" 12/256gb",
+    "marca": "motorola",
+    "cantidad": 23,
+    "precio": 249999.0,
+    "importado": false
+  },
+  "2978": {
+    "producto": " celular edge 30 ultra 6.67\" 12/256gb negro con bundle ",
+    "marca": "motorola",
+    "cantidad": 37,
+    "precio": 379999.0,
+    "importado": true
+  },
+  "4468": {
+    "producto": "notebook n-130 ic 4gb 128ssd w11",
+    "marca": "gfast",
+    "cantidad": 11,
+    "precio": 146999.0,
+    "importado": true
+  },
+  "4436": {
+    "producto": "notebook  inspiron 15 3525 amd ryzen r7",
+    "marca": "dell",
+    "cantidad": 50,
+    "precio": 489999.0,
+    "importado": false
+  },
+  "4451": {
+    "producto": "notebook  vjfe54a0111h 15.6\" core i3 4gb 128gb",
+    "marca": "vaio",
+    "cantidad": 28,
+    "precio": 284199.0,
+    "importado": false
+  },
+  "3394": {
+    "producto": "tablet galaxy tab s7 12.4'' fe sm-t733n 6gb 128gb",
+    "marca": "samsung",
+    "cantidad": 11,
+    "precio": 329999.0,
+    "importado": false
+  },
+  "3302": {
+    "producto": "tablet samsung galaxy tab a7 lite 8.7\" 3gb 32gb gris oscuro",
+    "marca": "samsung",
+    "cantidad": 98,
+    "precio": 79999.0,
+    "importado": false
+  },
+  "3407": {
+    "producto": "tablet q7s 7\" 2gb 32gb burgundy x-view",
+    "marca": "x-view",
+    "cantidad": 42,
+    "precio": 42800.0,
+    "importado": false
+  },
+  "4460": {
+    "producto": " notebook  alienware15 intel core i7",
+    "marca": "dell",
+    "cantidad": 30,
+    "precio": 999000.0,
+    "importado": false
+  },
+  "2805": {
+    "producto": " auriculares vincha hp107ws blanco",
+    "marca": "noblex",
+    "cantidad": 16,
+    "precio": 5000.0,
+    "importado": true
+  },
+  "2936": {
+    "producto": " ps5 headset gray camo",
+    "marca": "sony",
+    "cantidad": 12,
+    "precio": 76999.0,
+    "importado": false
+  },
+  "3134": {
+    "producto": "parlante bluetooth go essential rojo ",
+    "marca": "jbl",
+    "cantidad": 17,
+    "precio": 18329.0,
+    "importado": false
+  },
+  "3129": {
+    "producto": "auriculares  ata-506a amarillo",
+    "marca": "aiwa",
+    "cantidad": 8549,
+    "precio": 6000.0,
+    "importado": true
+  },
+  "3131": {
+    "producto": "parlante bluetooth flip 6 squad 20w ",
+    "marca": "jbl",
+    "cantidad": 33,
+    "precio": 72500.0,
+    "importado": false
+  },
+  "2800": {
+    "producto": "parlante mnt670 6500w pmpo ",
+    "marca": "noblex",
+    "cantidad": 29,
+    "precio": 118749.0,
+    "importado": true
+  },
+  "3059": {
+    "producto": "parlante port\u00e1til xboom rm2",
+    "marca": "lg",
+    "cantidad": 8,
+    "precio": 150099.0,
+    "importado": false
+  },
+  "2881": {
+    "producto": "auriculares deportivos shq6500cl",
+    "marca": "philips",
+    "cantidad": 39,
+    "precio": 15000.0,
+    "importado": true
+  },
+  "2983": {
+    "producto": "autoestereo sc7001 + 2 parlantes 6,5\"",
+    "marca": "stromberg",
+    "cantidad": 6,
+    "precio": 52000.0,
+    "importado": true
+  },
+  "2951": {
+    "producto": "radio reloj j960",
+    "marca": "noblex",
+    "cantidad": 36,
+    "precio": 13769.0,
+    "importado": true
+  },
+  "1347": {
+    "producto": " amoladora 4\"1/2 650w g650",
+    "marca": "black & decker",
+    "cantidad": 16,
+    "precio": 16980.0,
+    "importado": false
+  },
+  "2089": {
+    "producto": "desmalezadora gst33-b3 33cc 1.2hp",
+    "marca": "black & decker",
+    "cantidad": 3,
+    "precio": 63999.0,
+    "importado": false
+  },
+  "1562": {
+    "producto": "destornillador bosch 12v gsr 1000 smart",
+    "marca": "bosch",
+    "cantidad": 14,
+    "precio": 40839.0,
+    "importado": false
+  },
+  "1560": {
+    "producto": "lijadora de palma meplo116p 150w",
+    "marca": "philco",
+    "cantidad": 9,
+    "precio": 13019.0,
+    "importado": true
+  },
+  "1150": {
+    "producto": "soldadora inverter arc 200 g3470ara",
+    "marca": "gamma",
+    "cantidad": 7,
+    "precio": 71789.0,
+    "importado": false
+  },
+  "1548": {
+    "producto": "amoladora gws 700 710w ",
+    "marca": "bosch",
+    "cantidad": 35,
+    "precio": 27339.0,
+    "importado": false
+  },
+  "3949": {
+    "producto": "calefactor 7500kcal eca8kvt ss visor mg",
+    "marca": "longvie",
+    "cantidad": 16,
+    "precio": 89566.0,
+    "importado": true
+  },
+  "4146": {
+    "producto": "caloventor 2000w phcf20a1p",
+    "marca": "philco",
+    "cantidad": 65,
+    "precio": 8399.0,
+    "importado": true
+  },
+  "3485": {
+    "producto": "aire acondicionado split 3300w fc as12ur4svrca00bkn",
+    "marca": "hisense",
+    "cantidad": 12,
+    "precio": 281369.0,
+    "importado": false
+  },
+  "4310": {
+    "producto": "vitroconvector 1500w pe-bvc15b blanco",
+    "marca": "peabody",
+    "cantidad": 48,
+    "precio": 29199.0,
+    "importado": true
+  },
+  "3670": {
+    "producto": " caloventor dualhot 2000w cfh510",
+    "marca": "liliana",
+    "cantidad": 73,
+    "precio": 14499.0,
     "importado": true
   }
 }

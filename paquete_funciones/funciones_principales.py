@@ -82,9 +82,9 @@ def borrar_producto_id(lista_stock):
     codigo = str(obtener_entero("Ingrese el código del producto: ", "El código debe ser representado numeros enteros."))
     
     if codigo in lista_stock:
-        
-        del lista_stock[codigo]
         print(f"Producto *{codigo}*/*{lista_stock[codigo]['producto']}* eliminado")
+        del lista_stock[codigo]
+        
         
     else:
         print(f"La entrada *{codigo}* no se encuentra en el stock.")
